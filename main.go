@@ -5,6 +5,8 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"github.com/tacheraSasi/devtime.git/utils"
 )
 
 func defaultOutput() {
@@ -38,10 +40,7 @@ func main() {
 func start() {
 	now := time.Now().Format(time.RFC3339)
 	err := os.WriteFile(timeFile, []byte(now), 0644)
-	if err != nil {
-		fmt.Errorf("Geez Something went wrong(Failed to write the file)", err)
-		return
-	}
+	utils.IsErr("Geez Something went wrong(Failed to write the file)", err)
 	fmt.Println("devtime started the tracking")
 }
 
